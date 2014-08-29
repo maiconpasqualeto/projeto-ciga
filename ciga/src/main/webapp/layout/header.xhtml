@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<!-- Na composição tudo que está fora da tag é ignorado -->
+	<ui:composition>
+		
+		<!-- Page Loader -->
+		<section id="pageloader" class="white-bg">
+			<div class="outter dark-border">
+				<div class="mid dark-border"></div>
+			</div>
+		</section>
+	
+		<!-- Navigation -->
+		<nav id="navigation" class="first-nav white-nav ">
+			<!-- Navigation Inner -->
+			
+			<!-- <div class="bg_logo col-md-3" ></div> -->
+						
+			<div class="nav-inner">
+			
+				<div class="logo">
+					<!-- Navigation Logo Link -->
+					<a href="#home" class="scroll">
+						<!-- Your Logo -->
+						<img src="images/logo-ciga.png" class="site_logo" alt="CIGA"/>
+					</a>
+				</div>
+				
+				<!-- Mobile Menu Button -->
+				<a class="mobile-nav-button colored"><i class="fa fa-bars"></i></a>
+				<!-- Navigation Menu -->
+				<div class="nav-menu clearfix semibold">
+					<ul class="nav uppercase oswald">
+						<li><a href="#home" class="scroll">HOME</a></li>
+						<li class="dropdown-toggle nav-toggle" ><a href="#about" class="scroll">Sobre<b data-toggle="dropdown"></b></a>
+							<!-- DropDown Menu -->
+							<ul class="dropdown-menu uppercase gray-border clearfix">
+								<li><a href="#what-we-do" class="scroll">Nosso trabalho</a></li>
+								<li><a href="#facts" class="scroll">estatísticas</a></li>
+							</ul>
+							<!-- End DropDown Menu -->
+						</li>
+						<li><a href="#portfolio" class="scroll">Portifolio</a></li>
+						<li><a href="#team" class="scroll">Equipe</a></li>
+						<li><a href="#noticias" class="scroll">Notícias</a></li>
+						<li class="dropdown-toggle nav-toggle" ><a href="#features" class="scroll">features<b data-toggle="dropdown"></b></a>
+							<!-- DropDown Menu -->
+							<ul class="dropdown-menu uppercase gray-border clearfix">
+								<li><a href="#clients" class="scroll">clients</a></li>
+								<li><a href="#featured-works" class="scroll">featured works</a></li>
+							</ul>
+							<!-- End DropDown Menu -->
+						</li>			
+						<li><a href="#contact" class="scroll">contato</a></li>
+					</ul>
+				</div><!-- End Navigation Menu -->
+			</div><!-- End Navigation Inner -->
+		</nav><!-- End Navigation -->
+				
+	</ui:composition>
+	<!-- Fim composição -->
+</h:body>
+
+</html>
