@@ -638,7 +638,7 @@
 	}
 
 	.nav-inner .logo a img{
-		max-height: 50px;
+		max-height: 47px;
 	}
 
 /* Navigation */
@@ -1861,7 +1861,7 @@
 		width: 80px;
 		height: 80px;
 		text-align: center;
-		background:#f4f4f4;
+		background: #6b6b6b;
 		color:white;
 		border-radius: 100%;
 		line-height: 105px;

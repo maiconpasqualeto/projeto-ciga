@@ -8,11 +8,11 @@ GOOGLE MAP
 
 			// Map Coordination
 
-			var latlng = new google.maps.LatLng(41.862274,-87.701328);
+			var latlng = new google.maps.LatLng(-20.442629, -54.594831);
 
 			// Map Options
 			var myOptions = {
-				zoom: 15,
+				zoom: 16,
 				center: latlng,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				disableDefaultUI: true,
@@ -33,7 +33,7 @@ GOOGLE MAP
 
 		  	// First Marker Coordination
 			
-			var myLatlng = new google.maps.LatLng(41.863774,-87.721328);
+			var myLatlng = new google.maps.LatLng(-20.443353, -54.595089);
 
 			// Your Texts 
 
@@ -42,21 +42,25 @@ GOOGLE MAP
 			  '</div>'+
 			  '<h4>' +
 
-			  'Office 1'+
+			  'CIGA - Consultoria Rural'+
 
-			  '</h4>'+
+			  '</h4>' +
+			  
+			  'Rua João de Oliveira Lima, 123' +
+			  
 			  '<p>' +
-
-			  'Your description is here.' +
-
-			  '</p>'+
+			  
+			  '(67) 3027-7543' +
+			  
+			  '</p>' +
+			  
 			  '</div>';
 			
 
 			var marker = new google.maps.Marker({
 				  position: myLatlng,
 				  map: map,
-				  title: 'Hello World!',
+				  title: 'CIGA - Consultoria Rural!',
 				  icon: image
 			  });
 
@@ -73,46 +77,5 @@ GOOGLE MAP
 			 /* ========= End First Marker ========= */
 
 
-
-
-			 /* ========= Second Marker ========= */
-
-			 // Second Marker Coordination
-
-			 var myLatlngSecond = new google.maps.LatLng(41.858774,-87.685328);
-
-			 // Your Texts
-
-			 var contentStringSecond = '<div id="content">'+
-			  '<div id="siteNotice">'+
-			  '</div>'+
-			  '<h4>' +
-
-			  'Office 2'+
-
-			  '</h4>'+
-			  '<p>' +
-
-			  'Your description is here.' +
-
-			  '</p>'+
-			  '</div>';
-
-			  var infowindowSecond = new google.maps.InfoWindow({
-				  content: contentStringSecond,
-				  });
-
-			 var markerSecond = new google.maps.Marker({
-				  position: myLatlngSecond,
-				  map: map,
-				  title: 'Hello World!',
-				  icon: image
-			  });
-
-			 google.maps.event.addListener(markerSecond, 'click', function() {
-				infowindowSecond.open(map,markerSecond);
-			  });
-
-			 /* ========= End Second Marker ========= */
 		
 		})
