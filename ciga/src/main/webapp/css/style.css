@@ -82,6 +82,32 @@
 
 /* North First Styles */
 
+.push-down-0 { margin-bottom: 0px; }
+
+.push-down-5 { margin-bottom: 5px; }
+
+.push-down-10 { margin-bottom: 10px; }
+
+.push-down-15 { margin-bottom: 15px; }
+
+.push-down-20 { margin-bottom: 20px; }
+
+.push-down-25 { margin-bottom: 25px; }
+
+.push-down-30 { margin-bottom: 30px; }
+
+.push-down-35 { margin-bottom: 35px; }
+
+.push-down-40 { margin-bottom: 40px; }
+
+.push-down-45 { margin-bottom: 45px; }
+
+.push-down-50 { margin-bottom: 50px; }
+
+.push-down-55 { margin-bottom: 55px; }
+
+.push-down-60 { margin-bottom: 60px; }
+
 /* Containers */
 
 	.container {
@@ -1650,6 +1676,11 @@
 	}
 
 /* Factors */
+
+	#facts .inner {
+		padding-top: 200px;
+		padding-bottom: 200px;
+	}
 
 	#facts .inner .facts .fact{
 		padding:32px 36px;

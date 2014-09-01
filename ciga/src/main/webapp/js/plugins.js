@@ -423,7 +423,7 @@ WHAT WE DO EFFECTS
 	          $optionLinks = $optionSets.find('a');
 
 	          // Your First Selected Item
-	          $containerFirst.isotope({ filter: '.movie' });
+	          $containerFirst.isotope({ filter: '.propriedades' });
 
 	    $optionLinks.click(function(){
 	        var $this = $(this);
