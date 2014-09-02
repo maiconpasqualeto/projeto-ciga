@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<!-- Na composição tudo que está fora da tag é ignorado -->
+	<ui:composition template="/layout/layout_interno.xhtml">
+
+		<ui:define name="principal">
+			
+			<!-- Page Header -->
+			<section id="home" class="page_header">
+				<!-- Inner -->
+				<div class="page_header_inner clearfix">
+					<!-- Left -->
+					<div class="p_head_left f-left">
+						<!-- Header -->
+						<h1 class="p-header oswald uppercase">
+							Confira nosso portifólio completo
+						</h1>
+						<!-- Description -->
+						<p class="p-desc">
+							Apresentamos todos os nossos projetos concluídos e em andamento.
+						</p>
+					</div>
+					<!-- Right -->
+					<div class="p_head_right f-left t-right">
+						<!-- Back Button -->
+						<a href="javascript:history.back()" class="ex-link p-head-button uppercase">
+							<i class="fa fa-angle-left"></i>
+							voltar
+						</a>
+					</div>
+				</div><!-- End Inner -->
+			</section><!-- End Page Header -->
+					
+			<!-- Portfolio Section -->
+			<section id="portfolio" class="container gray-bg">
+				<!-- Portfolio Inner -->
+				<div class="inner portfolio">
+					<!-- Header -->
+					<h1 class="header uppercase dark oswald">Portifólio</h1>
+					<!-- Header Strip(s) -->
+					<div class="header-strips-one"></div>
+					<!-- Header Description -->
+					<h2 class="description">Abaixo listamos alguns dos clientes atendidos por nossa empresa. 
+						As fotos ilustram o antes e o depois dos projetos realizados.</h2>
+				</div>
+				<!-- End Portfolio Inner -->
+
+				<div class="portfolio fullwidth t-center relative">
+
+					<!-- Filters -->
+					<div id="options" class="filter-menu fullwidth">
+						<ul id="filters"
+							class="option-set relative normal oswald uppercase"
+							data-option-key="filter">
+							<li><a href="#filter" data-option-value="*" class="selected">Mostrar todos</a></li>
+							<li><a href="#filter" data-option-value=".infra"><span>Infra-estrutura</span></a></li>
+							<li><a href="#filter" data-option-value=".gado"><span>Gado</span></a></li>
+							<li><a href="#filter" data-option-value=".plantacao"><span>Plantação</span></a></li>
+							<li><a href="#filter" data-option-value=".arrendamento"><span>Arrendamento</span></a></li>
+						</ul>
+					</div>
+
+					<!-- Portfolio Items -->
+					<div class="portfolio-items t-center">
+
+						<!-- Item -->
+						<div class="item five infra">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_01.html" class="work-image ex-link">
+									<!-- Item Image -->
+									<img src="images/portfolio/brete.jpg" alt="" />
+									<!-- Item Details -->
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda Porteira Quebrada</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five infra gado">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_01.html" class="work-image ex-link"> <!-- Item Image -->
+									<img src="images/portfolio/pasto.jpg" alt="" />
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda Esperança</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura Gado</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five branding plantacao">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_02.html" class="work-image ex-link">
+									<img src="images/portfolio/plantacao.jpg" alt="" />
+									<!-- Item Details -->
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda juara</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">plantacao</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five infra">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_02.html" class="work-image ex-link">
+									<img src="images/portfolio/reforma_curral.jpg" alt="" />
+									<!-- Item Details -->
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda boa vista</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five video infra arrendamento">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_03.html" class="work-image ex-link">
+									<img src="images/portfolio/reforma_caprinos.jpg" alt="" />
+									<!-- Item Details -->
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda diamantina</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura, arrendamento</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five infra gado">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_03.html" class="work-image ex-link">
+									<img src="images/portfolio/curral.jpg" alt="" />
+									
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda nova</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura, arrendamento</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five arrendamento">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_01.html" class="work-image ex-link">
+									<img src="images/portfolio/arrenda.jpg" alt="" />
+									<!-- Item Details -->
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda retiro</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">arrendamento</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five infra">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_01.html" class="work-image ex-link">
+									<img src="images/portfolio/curral1.jpg" alt="" />
+									
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Haras Sacramento</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+
+
+						<!-- Item -->
+						<div class="item five infra">
+							<!-- Item Inner -->
+							<div class="item-inner">
+								<!-- Item Link -->
+								<a href="projects/project_01.html" class="work-image ex-link">
+									<img src="images/portfolio/projeto_fazenda.jpg" alt="" />
+									
+									<div class="item-details">
+										<!-- Item Header -->
+										<h1 class="oswald uppercase white">Fazenda Modelo</h1>
+										<!-- Item Strips -->
+										<span class="portfolio-strips"></span>
+										<!-- Item Description -->
+										<p class="oswald uppercase">infra-estrutura, projeto</p>
+									</div> <!-- End Item Details -->
+								</a>
+								<!-- End Item Link -->
+							</div>
+							<!-- End Item Inner -->
+						</div>
+						<!-- End Item -->
+						
+						<!-- Item -->
+						<div class="item five gado">
+							<!-- Item Link -->
+							<a href="projects/project_01.html" class="work-image ex-link">
+								<img src="images/portfolio/confinamento.jpg" alt="" />
+								
+								<div class="item-details">
+									<!-- Item Header -->
+									<h1 class="oswald uppercase white">Fazenda Estrela</h1>
+									<!-- Item Strips -->
+									<span class="portfolio-strips"></span>
+									<!-- Item Description -->
+									<p class="oswald uppercase">gado</p>
+								</div>
+								<!-- End Item Details -->
+							</a>
+							<!-- End Item Link -->
+						</div>
+						<!-- End Item -->
+
+					</div>
+					<!-- End Portfolio Items -->
+				</div>
+				<!-- End Portfolio -->
+			</section>
+			<!-- End Portfolio Section -->
+			
+			
+			
+			<section id="contact" class="container night-bg">
+			
+				<!-- Inner -->
+				<div class="inner">
+					<!-- Header -->
+					<h1 class="header uppercase dark oswald">
+						Entre em contato conosto
+					</h1>
+					<!-- Header Strip(s) -->
+					<div class="header-strips-one"></div>
+					<!-- Header Description -->
+					<h2 class="description dark">
+						Envie-nos um email.
+					</h2>
+		
+					<!-- Contact -->
+					<div class="contact animated" data-animation="fadeIn" data-animation-delay="200">
+						<!-- Contact Form -->
+						<form id="contact-form" name="cform" class="clearfix" method="post" action="php/mail.php">
+							<!-- Left Inputs -->
+							<div class="col-xs-6 left">
+		
+								<!-- Name -->
+								<span class="name-missing">Por favor, escreva seu Nome</span>
+								<input type="text" name="name" id="name" class="form light-form oswald light" placeholder="NOME" />
+		
+								<!-- Email -->
+								<span class="email-missing">Por favor, escreva seu E-mail</span>
+								<input type="text" name="email" id="email" class="form light-form oswald light" placeholder="E-MAIL" />
+		
+								<!-- Subject -->
+								<span class="subject-missing">Por favor, escreva um Assunto</span>
+								<input type="text" name="subject" id="subject" class="form light-form oswald light" placeholder="ASSUNTO" />
+		
+							</div>
+							<!-- End Left Inputs -->
+							<!-- Right Text Area -->
+							<div class="col-xs-6 right">
+		
+								<!-- Message -->
+								<span class="message-missing">Por favor, escreva uma mensagem</span>
+								<textarea name="message" id="message" class="form light-form textarea oswald light" placeholder="MENSAGEM"></textarea>
+		
+							</div>
+							<!-- End Right Text Area -->
+							<!-- Send Button -->
+							<div class="col-xs-12">
+								<!-- Button -->
+								<button type="submit" id="submit" name="submit" class="form contact-form-button light-form oswald light">SEND EMAIL</button>
+							</div>
+							<!-- End Send Button -->
+						</form>
+						<!-- End Form -->
+		
+						<!-- Your Mail Message -->
+						<div class="mail-message-area">
+							<!-- Message -->
+							<div class="alert light-form mail-message not-visible-message">
+								<strong>Obrigado !</strong> Seu email foi enviado.
+							</div>
+						</div>
+						<!-- End Mail Message -->
+					</div><!-- End Contact Form -->
+				</div><!-- End Inner -->
+			</section><!-- End Contact Section -->
+			
+			
+			
+		</ui:define>
+		
+		
+	</ui:composition>
+	
+</h:body>
+</html>

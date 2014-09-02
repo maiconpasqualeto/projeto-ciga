@@ -1570,6 +1570,10 @@
 		color:#c4c4c4;
 		margin:10px 0 0;
 	}
+	
+	.w-items .w-item img{
+		max-height: 250px;
+	}
 
 /* isotope styles */
 
@@ -1682,7 +1686,7 @@
 		padding-bottom: 200px;
 	}
 
-	#facts .inner .facts .fact{
+	#features .inner .facts .fact{
 		padding:32px 36px;
 		border:1px #b1b1b1 dashed;
 		width:auto;
@@ -1694,11 +1698,11 @@
 		cursor: default;
 	}
 
-	#facts .inner .facts div:last-child{
+	#features .inner .facts div:last-child{
 		margin-right:0px;
 	}
 
-	#facts .inner .facts .fact h1{
+	#features .inner .facts .fact h1{
 		font-size:60px;
 		color:inherit;
 		margin:0;
@@ -1706,11 +1710,25 @@
 		letter-spacing: 1px;
 	}
 
-	#facts .inner .facts .fact h3{
+	#features .inner .facts .fact h3{
 		font-size:20px;
-		color:#3e3e3e;
+		color:#ffffff;
 		margin:0;
 		padding:0;
+	}
+	
+	#features .facts a.view-more {
+	    display: inline-block;
+	    width: 80px;
+	    height: 80px;
+	    text-align: center;
+	    background: none repeat scroll 0% 0% #6B6B6B;
+	    color: #FFF;
+	    border-radius: 100%;
+	    line-height: 105px;
+	    margin-top: 30px;
+	    margin-bottom: 55px;
+	    transition: all 0.5s ease 0s;
 	}
 
 /* Portfolio */
@@ -2355,7 +2373,7 @@
 	.noticias{
 		width:100%;
 		height: auto;
-		padding:120px 0 100px;
+		
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -3234,8 +3252,8 @@
 	}
 
 	.light-form{
-		background:#fafafa;
-		border:1px solid #eeeeee;
+		background:#f0f0f0;
+		border:1px solid #969696;
 	}
 
 	.dark-form{
@@ -3262,12 +3280,36 @@
 		color:#7f7f7f;
 		letter-spacing: 0.5px;
 	}
+	
+	#subscribe form .subscribe-form:active,
+	#subscribe form .subscribe-form:focus{
+		outline: none;
+		border-color: #7f7f7f;
+		background-color: #00ff13;
+	}
+	
+	#subscribe form .light-form:hover{
+		border-color: #7f7f7f;
+		background-color: #00ff13;
+	}
+	
+	#subscribe form {
+		margin-top: 100px;
+		max-width: 350px;
+	}
+	
+	#subscribe .div-subscribe {
+		text-align: center;
+		text-align: -moz-center;
+	}
 
 /* Actives, Focuses and Rollovers */
 
 	#contact .contact form .form:active,
 	#contact .contact form .form:focus{
 		outline: none;
+		border-color: #7f7f7f;
+		background-color: #00ff13;
 	}
 
 	#contact .contact form button.contact-form-button:hover{
@@ -3275,8 +3317,8 @@
 	}
 
 	#contact .contact form .light-form:hover{
-		border-color: #4d4d4d;
-		background-color: gray;
+		border-color: #7f7f7f;
+		background-color: #00ff13;
 	}
 	
 
