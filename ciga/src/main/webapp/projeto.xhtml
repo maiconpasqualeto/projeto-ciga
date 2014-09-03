@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<!-- Na composição tudo que está fora da tag é ignorado -->
+	<ui:composition template="/layout/layout_interno.xhtml">
+
+		<ui:define name="principal">
+		
+			<!-- Page Header -->
+			<section id="home" class="page_header">
+				<!-- Inner -->
+				<div class="page_header_inner clearfix">
+					<!-- Left -->
+					<div class="p_head_left f-left">
+						<!-- Header -->
+						<h1 class="p-header oswald uppercase">
+							Projetos em execução
+						</h1>
+						<!-- Description -->
+						<p class="p-desc">
+							Descrição completa do projeto em execução
+						</p>
+					</div>
+					<!-- Right -->
+					<div class="p_head_right f-left t-right">
+						<!-- Back Button -->
+						<a href="javascript:history.back()" class="ex-link p-head-button uppercase">
+							<i class="fa fa-angle-left"></i>
+							voltar
+						</a>
+					</div>
+				</div><!-- End Inner -->
+			</section><!-- End Page Header -->
+		
+			<!-- Project -->
+			<section id="project-section" class="project">
+		
+				<!-- Inner -->
+				<div class="project_inner t-center">
+					<!-- Header -->
+					<h1 class="project_header normal dark">Projeto de reestruturação da Fazenda Esperança</h1>
+					<!-- Header Strip(s) -->
+					<div class="header-strips-one"></div>
+					<!-- Description -->
+					
+					
+					<!-- Project Details -->
+					<div class="project-detail-columns clearfix t-left">
+						<!-- Project Description -->
+						<div class="col-xs-8 p-column">
+							<!-- Header -->
+							<h3 class="p-head">
+								Descrição do Projeto
+							</h3>
+							<!-- Description -->
+							<p class="p-text t-left">
+								Vários problemas foram identificados nessa prioridades e serão feitos estudos a fim de melhorar a rentabilidade da produção de gado, 
+								reduzir os impactos ambientais e melhorar a conformidade com as regulamentações de trabalho na região. 
+								O desafio mais crítico é a atenção à conformidades legais em relação a aspectos sociais e ambientais. 
+								A análise mostrou também uma importante falta de conhecimento sobre os requisitos legais, e a carência 
+								de informações por parte dos agricultores.
+							</p>
+						</div>
+						<!-- End Project Description -->
+		
+						<!-- Project Right Area -->
+						<div class="col-xs-4 p-column">
+							<!-- Header -->
+							<h3 class="p-head">
+								Detalhes do projeto
+							</h3>
+							<!-- Project Properties -->
+							<ul class="project_features">
+								<!-- Part -->
+								<li class="p-feature">
+									<!-- Name -->
+									<h4 class="bold">
+										Cliente
+									</h4>
+									<!-- Feature -->
+									<p class="normal">
+										Família Ribeiro
+									</p>
+								</li>
+								<!-- End Part -->
+								
+								<!-- Part -->
+								<li class="p-feature">
+									<!-- Name -->
+									<h4 class="bold">
+										Contato
+									</h4>
+									<!-- Feature -->
+									<p class="normal">
+										(67) 9456-8934
+									</p>
+								</li>
+								<!-- End Part -->
+							</ul>
+							<!-- End Project Properties -->
+						</div>
+						<!-- End Project Right Area -->
+					</div>
+					<!-- End Project Details -->
+					
+					
+					<!-- Images -->
+					<div class="mp-gallery">
+				
+							<!-- Image -->
+							<a class="work-image " href="images/project/curral.jpg">
+								<!-- Image Src -->
+								<img src="images/project/curral.jpg" alt=""/>
+							</a>
+							<!-- Image -->
+							<a class="work-image " href="images/project/projeto_curral.jpg">
+								<!-- Image Src -->
+								<img src="images/project/projeto_curral.jpg" alt=""/>
+							</a>
+							<!-- Image -->
+							<a class="work-image " href="images/project/gado_pastagem1.jpg">
+								<!-- Image Src -->
+								<img src="images/project/gado_pastagem1.jpg" alt=""/>
+							</a>
+							<a class="work-image " href="images/project/gado_pastagem.jpg">
+								<!-- Image Src -->
+								<img src="images/project/gado_pastagem.jpg" alt=""/>
+							</a>
+				
+					</div>
+		
+					<!-- Custom Boxes -->
+					<div class="custom_boxes clearfix">
+		
+						<!-- Box -->
+						<div class="col-xs-4 box t-left clearfix">
+							<!-- Box Left -->
+							<div class="left-icon f-left">
+								<!-- Box Icon -->
+								<a class="round">
+									<i class="fa fa-check-square-o"></i>
+								</a>
+							</div>
+							<!-- End Box Left -->
+							<!-- Box Right -->
+							<div class="right-desc f-left">
+								<!-- Box Header -->
+								<h1 class="box-head dark">
+									Reformulação da Pastagem
+								</h1>
+								<!-- Box Description -->
+								<p class="box-desc dark">
+									O manejo do pastejo tem um impacto bastante grande sobre a maioria dos
+									processos envolvidos em sistemas de exploração de pastagens, influenciando não
+									apenas o crescimento e a morfologia das plantas, bem como a economia de
+									nutrientes do crescimento das pastagens.
+								</p>
+							</div>
+							<!-- Box Right -->
+						</div>
+						<!-- End Box -->
+		
+						<!-- Box -->
+						<div class="col-xs-4 box t-left clearfix">
+							<!-- Box Left -->
+							<div class="left-icon f-left">
+								<!-- Box Icon -->
+								<a class="round">
+									<i class="fa fa-check-square-o"></i>
+								</a>
+							</div>
+							<!-- End Box Left -->
+							<!-- Box Right -->
+							<div class="right-desc f-left">
+								<!-- Box Header -->
+								<h1 class="box-head dark">
+									Reforma do curral
+								</h1>
+								<!-- Box Description -->
+								<p class="box-desc dark">
+									Na atividade de pecuária de corte, a construção de currais para manejo do gado constitui
+									investimento indispensável e prioritário. Apesar de existirem multas alternativas quanto 
+									aos materiais empregados, formas e tamanhos, os currais tradicionais de madeira, com 
+									capacidade ao redor de 500 bovinos.
+								</p>
+							</div>
+							<!-- Box Right -->
+						</div>
+						<!-- End Box -->
+		
+						<!-- Box -->
+						<div class="col-xs-4 box t-left clearfix">
+							<!-- Box Left -->
+							<div class="left-icon f-left">
+								<!-- Box Icon -->
+								<a class="round">
+									<i class="fa fa-check-square-o"></i>
+								</a>
+							</div>
+							<!-- End Box Left -->
+							<!-- Box Right -->
+							<div class="right-desc f-left">
+								<!-- Box Header -->
+								<h1 class="box-head dark">
+									Cercas e Porteiras
+								</h1>
+								<!-- Box Description -->
+								<p class="box-desc dark">
+									As cercas são destinadas a garantir a contenção dos animais no interior 
+									do curral, devendo ter 2,00 m de altura nas cercas internas e 2,15 m nas cercas externas
+								</p>
+							</div>
+							<!-- Box Right -->
+						</div>
+						<!-- End Box -->
+		
+					</div><!-- End Custom Boxes -->
+				</div><!-- End Inner -->
+				
+			</section><!-- End Project -->
+			
+		
+		</ui:define>
+		
+		
+	</ui:composition>
+	
+</h:body>
+</html>
