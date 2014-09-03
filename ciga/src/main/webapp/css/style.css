@@ -4781,14 +4781,12 @@
 		opacity: 1;
 		color:white;
 	}
-	
-	.logo-central{
-		max-height: 180px; 
-		height: 10%;
-	}
-	
-	.logo-central img{
-  		max-height: 170px;
+		
+	.img-logo-central{
+  		width:350px;
+  		max-width: 70%;
+	    height: auto;
+	    overflow:hidden;
 	}
 	
 	

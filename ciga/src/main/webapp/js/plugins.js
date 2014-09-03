@@ -655,9 +655,10 @@ MOBILE BACKGROUND FOR VIDEO BACKGROUNDS
 $(window).load(function(){
 	'use strict';
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		$('.mbYTP_wrapper').addClass('mobile-bg');
+		$('#P10').css('display', 'none');
 		$('section , div').addClass('b-scroll');
 		$('.animated').addClass('visible');
+		$('.mbYTP_wrapper').addClass('mobile-bg');				
 	}
 	else{
 		if (jQuery.browser.mozilla) {}
