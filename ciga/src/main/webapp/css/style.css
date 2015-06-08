@@ -329,6 +329,11 @@
 	.t-justify{
 		text-align:justify !important;
 	}
+	
+	.about p {
+		text-align: justify !important;
+		text-indent: 40px;
+	}
 
 /* Font Weights, Styles */
 
@@ -1430,7 +1435,7 @@
 		width:100%;
 		z-index:3;
 		position: relative;
-		margin:75px auto 0;
+		margin:75px auto;
 	}
 
 	#about .about-boxes .about-box{
@@ -1500,6 +1505,19 @@
 		-moz-transform: scale(1.1);
 		-ms-transform: scale(1.1);
 		transform: scale(1.1);
+	}
+	
+	#about .about a.view-more {
+	    display: inline-block;
+	    width: 80px;
+	    height: 80px;
+	    text-align: center;
+	    background: none repeat scroll 0% 0% #6B6B6B;
+	    color: #FFF;
+	    border-radius: 100%;
+	    line-height: 105px;
+	    margin-top: 30px;
+	    transition: all 0.5s ease 0s;
 	}
 
 /* What We Do Section */	
@@ -4788,5 +4806,20 @@
 	    height: auto;
 	    overflow:hidden;
 	}
+
+	.text-comment {
+		padding-left: 120px;
+		margin-bottom: 20px;
+	}
 	
+	.about ul
+	{
+	    list-style: initial;
+	    padding: 0 0 0 40px;
+	}
+
+	.about li
+	{
+	    display: list-item;
+	}
 	
