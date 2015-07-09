@@ -108,6 +108,8 @@
 
 .push-down-60 { margin-bottom: 60px; }
 
+.red-clr { color: #9d261d; }
+
 /* Containers */
 
 	.container {
@@ -3433,12 +3435,12 @@
 		margin:25px auto 0;
 	}
 
-	.contact span { 
+	/* .contact span { 
 		display:none; 
 		font-size:12px; 
 		line-height:30px; 
 		color:red;
-	}
+	} */
 
 /* Address */
 
@@ -4889,3 +4891,7 @@
 	    display: list-item;
 	}
 	
+	.acoordion-header {
+		background-color: #412D2D !important;
+		color: #80FF00 !important;
+	}
