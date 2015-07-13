@@ -33,6 +33,14 @@ public class PrincipalBean implements Serializable {
 	}
 	
 	public void enviarEmailContato() {
+		contatoMensagem += "\r\n\r\nEmail: " + contatoEmail;
+		
+		CigaFacade.getInstance().enviarEmail(contatoNome, contatoEmail, contatoAssunto, contatoMensagem);
+		
+		contatoNome = null;
+		contatoEmail = null;
+		contatoAssunto = null;
+		contatoMensagem = null;
 		
 	}
 

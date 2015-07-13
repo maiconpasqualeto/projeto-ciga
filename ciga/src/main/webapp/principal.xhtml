@@ -1255,11 +1255,17 @@
 			
 						<!-- Contact -->
 						<div class="contact animated" data-animation="fadeIn" data-animation-delay="200">
+							<div style="margin-left: 15px;" >
+								<h2 style="color: #3E3E3E" >
+									<h:outputText id="msgEmail" value="Email enviado com sucesso!!"  style="display: none;" />
+								</h2>
+							</div>							
 							<!-- Contact Form -->
-							<h:form id="contact-form" name="cform" class="clearfix">
+							<h:form id="contact-form" name="cform" class="clearfix" prependId="false">
+																	
 								<!-- Left Inputs -->
 								<div class="col-xs-6 left">
-			
+									
 									<!-- Name -->
 									<h:message for="name" styleClass="red-clr"/>									
 									<h:inputText id="name" name="name" value="#{principalBean.contatoNome}" styleClass="form light-form oswald light" 
@@ -1299,8 +1305,10 @@
 								<!-- Send Button -->
 								<div class="col-xs-12">
 									<!-- Button -->
-									<h:commandButton value="ENVIAR EMAIL" actionListener="#{principalBean.enviarEmailContato}" class="form contact-form-button light-form oswald light">
-										<f:ajax execute="@form" render="@form"/>
+									<h:commandButton 
+											value="ENVIAR EMAIL" actionListener="#{principalBean.enviarEmailContato}" 
+											class="form contact-form-button light-form oswald light">
+										<f:ajax execute="@form" render="@form" onevent="function(data) { if (data.status == 'success') { $('#msgEmail').toggle(); window.setTimeout(function () { $('#msgEmail').toggle(); }, 4000);}}"/>
 									</h:commandButton>
 								</div>
 								<!-- End Send Button -->

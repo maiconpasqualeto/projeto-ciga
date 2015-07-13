@@ -58,18 +58,18 @@ public class CigaFacade {
 					
 					SimpleEmail email = new SimpleEmail();  
 			        email.setHostName("email-ssl.com.br"); // o servidor SMTP para envio do e-mail  
-			        email.addTo(enderecoEmail, nome); //destinatário  
-			        email.setFrom("contato@cigaconsultoria.com.br", "Ciga Consultoria"); // remetente  
+			        email.addTo("webmaster@cigaconsultoria.com.br", "Site Ciga Consultoria"); //destinatário  
+			        email.setFrom("webmaster@cigaconsultoria.com.br", "Ciga Consultoria"); // destinatário
 			        email.setSubject(assunto); // assunto do e-mail  
 			        email.setMsg(mensagem); //conteudo do e-mail  
-			        email.setAuthentication("webmaster@lordpetstore.com.br", "mariana123!@");  
+			        email.setAuthentication("webmaster@cigaconsultoria.com.br", "mariana123!@");  
 			        email.setSmtpPort(465);  
 			        email.setSSL(true);  
 			        email.setTLS(true);  
 			        email.send();
 		        
 				} catch (EmailException e) {
-					Logger.getLogger(getClass()).error("Erro ao enviar email", e);
+					Logger.getLogger(CigaFacade.class).error("Erro ao enviar email", e);
 				}
 		        
 			}
