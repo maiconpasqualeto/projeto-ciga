@@ -1131,12 +1131,15 @@
 
 
 			<!-- Noticias -->
-			<section id="noticias" class="noticias soft-bg-1 bg1 parallax3 t-center">
+			<section id="noticias" class="noticias soft-bg-1 bg1 parallax3 t-center span10">
 
 				<!-- Arrow -->
 				<a class="t-arrow"></a>
 				
 				<div class="inner">
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-8">
+						
 
 					<!-- Quote -->
 					<h1 class="header uppercase white oswald">
@@ -1155,45 +1158,14 @@
 								</h1> <!-- Author -->
 								<p class="white t-justify"><h:outputText value="#{noticia.descricao}"/></p>
 								<p class="author uppercase"><h:outputText value="#{noticia.fonte}"/> | <h:outputText value="#{noticia.dataHoraCompleta}"/> </p>								
-								<h:outputLink styleClass="uppercase normal oswald white darkgrey button" value="http://#{noticia.link}" target="_blank">Leia mais</h:outputLink>
+								<h:outputLink styleClass="uppercase normal oswald white darkgrey button" value="#{noticia.link}" target="_blank">Leia mais</h:outputLink>
 							</li>
 						</ui:repeat>
-	
-						<!-- Slide -->
-						<li class="text normal">
-							<!-- Quote -->
-							<h1 class="white">
-								Venda de fertilizantes deve crescer<span class="colored bold"> 3% em 2014</span>
-							</h1> <!-- Author -->
-							<p class="author uppercase">Beatriz Bucciano | São Paulo (SP) - 26 de agosto de 2014</p>
-							<a href="#" target="_blank" class="uppercase normal oswald white darkgrey button"> leia mais </a>
-						</li>
-						<!-- End Slide -->
-	
-						<!-- Slide -->
-						<li class="text normal">
-							<!-- Quote -->
-							<h1 class="white">
-								Produção hidropônica rende <span class="colored bold">30% mais</span> consumindo <span class="colored bold">70% menos água.</span>
-							</h1> <!-- Author -->
-							<p class="author uppercase">Andrea Parise | Brazlândia (DF)</p>
-							<a href="#" target="_blank" class="uppercase normal oswald white darkgrey button"> leia mais </a>
-						</li>
-						<!-- End Slide -->
-	
-						<!-- Slide -->
-						<li class="text normal">
-							<!-- Quote -->
-							<h1 class="white">
-								Lançamento na <span class="colored bold">23ª Bienal do Livro</span> de São Paulo ensina a criar hortas em pequenos espaços.
-							</h1> <!-- Author -->
-							<p class="author uppercase">Lucas Nascimento, com supervisão de Gisele Neuls</p>
-							<a href="#" target="_blank" class="uppercase normal oswald white darkgrey button"> leia mais </a>
-						</li>
-						<!-- End Slide -->
+						
 					</ul>
 					<!-- End Text Slider -->
-				
+				</div>
+					</div>
 				</div>
 			</section>
 			<!-- End Testimonials -->

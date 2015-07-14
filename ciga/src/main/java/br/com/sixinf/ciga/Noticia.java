@@ -78,7 +78,7 @@ public class Noticia implements Serializable {
 	}
 
 	public String getDataHoraCompleta() {
-		DateFormat df = new SimpleDateFormat("dd MMMMM YYYY - HH:MM", new Locale("pt", "BR"));
+		DateFormat df = new SimpleDateFormat("dd MMMMM YYYY - HH'hs'", new Locale("pt", "BR"));
 		return df.format(dataHora);
 	}
 }

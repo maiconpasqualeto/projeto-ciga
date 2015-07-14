@@ -26,6 +26,10 @@
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
+   <listener>
+	 <listener-class>br.com.sixinf.ciga.listener.CigaListener</listener-class>
+   </listener>
 
    <servlet-mapping>
        <servlet-name>Faces Servlet</servlet-name>
