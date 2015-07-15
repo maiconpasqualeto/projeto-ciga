@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.sixinf.ciga;
+package br.com.sixinf.ciga.entidades;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -9,24 +9,48 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.sixinf.ferramentas.persistencia.Entidade;
+
 /**
  * @author maicon
  *
  */
-public class Noticia implements Serializable {
+@Entity
+@Table(name="noticia")
+public class Noticia implements Entidade, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@SequenceGenerator(name="seqNoticia", sequenceName="noticia_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqNoticia")
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="titulo")
 	private String titulo;
 	
+	@Column(name="descricao")
 	private String descricao;
 	
+	@Column(name="fonte")
 	private String fonte;
 	
-	private String destaqueTitulo;
-	
+	@Column(name="link")
 	private String link;
 	
+	@Column(name="data_hora")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataHora;
 
 	public String getDescricao() {
@@ -53,14 +77,6 @@ public class Noticia implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public String getDestaqueTitulo() {
-		return destaqueTitulo;
-	}
-
-	public void setDestaqueTitulo(String destaqueTitulo) {
-		this.destaqueTitulo = destaqueTitulo;
-	}
-
 	public String getLink() {
 		return link;
 	}
@@ -80,5 +96,10 @@ public class Noticia implements Serializable {
 	public String getDataHoraCompleta() {
 		DateFormat df = new SimpleDateFormat("dd MMMMM YYYY - HH'hs'", new Locale("pt", "BR"));
 		return df.format(dataHora);
+	}
+
+	@Override
+	public Long getIdentificacao() {
+		return id;
 	}
 }

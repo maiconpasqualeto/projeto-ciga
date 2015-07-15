@@ -931,33 +931,36 @@
 					<div class="header-strips-one"></div>
 					<!-- Facts -->					
 					<div class="facts colored t-center oswald uppercase">
-
+												
 						<!-- Fact -->
-						<div class="fact" data-perc="122">
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBoi.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
+							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
 							<h3>@ <br></br> boi gordo </h3>
-						</div>
-						<!-- End Fact -->
-
+						</h:panelGroup>
+						
 						<!-- Fact -->
-						<div class="fact" data-perc="115">
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoVaca.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
+							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
-							<h3>@ <br></br> vaca gorda</h3>
-						</div>
-						<!-- End Fact -->
+							<h3>@ <br></br> vaca gorda </h3>
+						</h:panelGroup>
 
 						<!-- Fact -->
-						<div class="fact" data-perc="1150">
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoSoja.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
+							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
-							<h3>cabeça <br></br> Bezerro Macho </h3>
-						</div>
-						<!-- End Fact -->
+							<h3>saca <br></br> soja </h3>
+						</h:panelGroup>
 												
 					</div>					
 					

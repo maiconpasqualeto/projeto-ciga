@@ -11,6 +11,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.sixinf.ciga.dao.CigaDAO;
+import br.com.sixinf.ciga.entidades.Cotacao;
+import br.com.sixinf.ciga.entidades.Noticia;
+import br.com.sixinf.ciga.entidades.TipoCotacao;
+
 /**
  * @author maicon
  *
@@ -22,6 +27,9 @@ public class PrincipalBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<Noticia> noticias = new ArrayList<Noticia>();
+	private Cotacao cotacaoBoi;
+	private Cotacao cotacaoVaca;
+	private Cotacao cotacaoSoja;
 	private String contatoNome;
 	private String contatoEmail;
 	private String contatoAssunto;
@@ -29,7 +37,10 @@ public class PrincipalBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		noticias = CigaFacade.getInstance().buscarNoticias();
+		noticias = CigaDAO.getInstance().buscarUltimasNoticias();
+		cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
+		cotacaoVaca = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
+		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);
 	}
 	
 	public void enviarEmailContato() {
@@ -84,4 +95,28 @@ public class PrincipalBean implements Serializable {
 		this.contatoMensagem = contatoMensagem;
 	}
 
+	public Cotacao getCotacaoBoi() {
+		return cotacaoBoi;
+	}
+
+	public void setCotacaoBoi(Cotacao cotacaoBoi) {
+		this.cotacaoBoi = cotacaoBoi;
+	}
+
+	public Cotacao getCotacaoVaca() {
+		return cotacaoVaca;
+	}
+
+	public void setCotacaoVaca(Cotacao cotacaoVaca) {
+		this.cotacaoVaca = cotacaoVaca;
+	}
+
+	public Cotacao getCotacaoSoja() {
+		return cotacaoSoja;
+	}
+
+	public void setCotacaoSoja(Cotacao cotacaoSoja) {
+		this.cotacaoSoja = cotacaoSoja;
+	}
+	
 }

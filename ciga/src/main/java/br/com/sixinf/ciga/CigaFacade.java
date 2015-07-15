@@ -4,10 +4,9 @@
 package br.com.sixinf.ciga;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -24,6 +23,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import br.com.sixinf.ciga.dao.CigaDAO;
+import br.com.sixinf.ciga.entidades.Cotacao;
+import br.com.sixinf.ciga.entidades.Noticia;
+import br.com.sixinf.ciga.entidades.TipoCotacao;
+import br.com.sixinf.ferramentas.log.LoggerException;
+
 /**
  * @author maicon
  *
@@ -38,9 +43,11 @@ public class CigaFacade {
 		return facade;
 	}
 	
-	public List<Noticia> buscarNoticias() {
-		
-		List<Noticia> noticias = new ArrayList<Noticia>();
+	/**
+	 * 
+	 * @return
+	 */
+	public void atualizarNoticias() {
 		
 		int timeout = 15; // 15 segundos
 		RequestConfig config = RequestConfig.custom()
@@ -81,13 +88,15 @@ public class CigaFacade {
 				    	n.setFonte("SBA1");
 				    	n.setLink(link);
 				    	
-				    	noticias.add(n);
+				    	boolean jaExiteNoticia = CigaDAO.getInstance().jaExiteNoticia(n.getTitulo(), n.getDataHora());
+				    	if (!jaExiteNoticia)
+				    		CigaDAO.getInstance().adicionar(n);
 				    	
 				    }
 				    
 			    }
-			} catch (ParseException e) {
-				Logger.getLogger(getClass()).error("Erro de parse da data ao buscar notícias", e);
+			} catch (ParseException | LoggerException e) {
+				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
 			} finally {
 			    response.close();
 			}
@@ -95,15 +104,104 @@ public class CigaFacade {
 			Logger.getLogger(getClass()).error("Erro de IO ao buscar notícias", e);
 		}
 		
-		/*Noticia n = new Noticia();
-		n.setTitulo("Recorde nas exportações brasileiras de soja em junho");
-		n.setDescricao("As exportações brasileiras de soja totalizaram 9,81 milhões de toneladas em junho, segundo o Ministério do Desenvolvimento, Indústria e Comércio Exterior (MDIC). Foi o maior volume mensal embarcado na história.\r\nAs exportações aumentaram 5,0% em relação a maio deste ano, quando foram exportadas 9,34 milhões de toneladas, recorde até então.");
-		n.setDataHora(new Date());
-		n.setFonte("Sistema Brasileiro do Agronegócio");
-		n.setLink("www.sba1.com/noticias/economia/56250/recorde-nas-exportacoes-brasileiras-de-soja-em-junho");
-		noticias.add(n);*/
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void atualizarCotacoes() {
+		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.BOI_GORDO);
+		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.VACA_GORDA);
+		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.SOJA_SACA);
+	}
+	
+	/**
+	 * 
+	 */
+	public void atualizarCotacao(TipoCotacao tipoCotacao) {
+		int timeout = 15; // 15 segundos
+		RequestConfig config = RequestConfig.custom()
+				  .setConnectTimeout(timeout * 1000)
+				  .setConnectionRequestTimeout(timeout * 1000)
+				  .setSocketTimeout(timeout * 1000).build();
+		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 		
-		return noticias;
+		String url = "http://www.canalrural.com.br/cotacao/";
+		switch (tipoCotacao) {
+			case BOI_GORDO:
+				url += "boi-gordo/";
+				break;
+			case VACA_GORDA:
+				url += "vaca-gorda/";
+				break;
+			case SOJA_SACA:
+				url += "soja/";
+				break;				
+		}
+		
+		HttpGet httpGet = new HttpGet(url);
+		try {
+			
+			CloseableHttpResponse response = httpclient.execute(httpGet);
+			try {
+				
+			    if (response.getStatusLine().getStatusCode() == 200) {
+			    
+				    HttpEntity entity = response.getEntity();
+				    
+				    String pagina = EntityUtils.toString(entity);
+				    Document doc = Jsoup.parse(pagina);
+				    Elements els = doc.getElementsByClass("cotacao-table").get(0).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+				    				    
+				    boolean primeiro = true;
+				    for (Element el: els) {
+				    	Elements children = el.children();
+				    	
+			    		int idx = 0;
+			    		
+			    		// pula essa linha:
+				    	// <td class="cotacao-table__data-type" rowspan="31"><p>MERCADO FÍSICO<span>@ (exceto se indicado)</span></p></td>
+				    	if (primeiro) {
+				    		idx++;
+				    		primeiro = false;
+				    	}
+				    	
+				    	String uf = children.get(idx++).text();
+				    	String praca = children.get(idx++).text();
+				    	String valorAVista = children.get(idx++).text();
+				    	String valorAPrazo = children.get(idx++).text();
+				    	
+				    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
+				    	
+				    	if (c == null) {				    	
+				    		c = new Cotacao();
+				    		c.setTipoCotacao(tipoCotacao);
+					    	c.setUf(uf);
+					    	c.setPraca(praca);
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	
+					    	CigaDAO.getInstance().adicionar(c);
+					    	
+				    	} else {
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	
+					    	CigaDAO.getInstance().atualizaCotacao(c);
+				    	}
+				    	
+				    }
+				    
+			    }
+			} catch (LoggerException e) {
+				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
+			} finally {
+			    response.close();
+			}
+		} catch (IOException e) {
+			Logger.getLogger(getClass()).error("Erro de IO ao buscar cotações", e);
+		}
 	}
 	
 	/**
@@ -142,7 +240,6 @@ public class CigaFacade {
 			}
 		}).start();
 	}
-
 	
-
+	
 }
