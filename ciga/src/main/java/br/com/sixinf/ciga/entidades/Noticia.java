@@ -43,6 +43,9 @@ public class Noticia implements Entidade, Serializable {
 	@Column(name="descricao")
 	private String descricao;
 	
+	@Column(name="resumo")
+	private String resumo;
+	
 	@Column(name="fonte")
 	private String fonte;
 	
@@ -52,6 +55,14 @@ public class Noticia implements Entidade, Serializable {
 	@Column(name="data_hora")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataHora;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -91,6 +102,22 @@ public class Noticia implements Entidade, Serializable {
 
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
+	}
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String[] getParagrafos() {
+		return descricao.split("\\r?\\n");
 	}
 
 	public String getDataHoraCompleta() {

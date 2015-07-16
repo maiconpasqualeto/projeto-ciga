@@ -18,7 +18,7 @@ public class TimerAtualizaDados extends TimerTask {
 	public void run() {
 		Logger.getLogger(getClass()).debug("Inicia atualização de notícias.");
 		
-		//CigaFacade.getInstance().atualizarNoticias();
+		CigaFacade.getInstance().atualizarNoticias();
 		
 		CigaFacade.getInstance().atualizarCotacoes();
 		

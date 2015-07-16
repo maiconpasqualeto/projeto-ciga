@@ -4365,7 +4365,7 @@
 	}
 
 	#project-section .project_inner .project-detail-columns .p-column{
-		padding:55px 15px 35px;
+		padding:25px 15px 35px;
 	}
 
 	#project-section .project_inner .project-detail-columns .p-column:first-child{
@@ -4895,3 +4895,12 @@
 		background-color: #412D2D !important;
 		color: #80FF00 !important;
 	}
+	
+	.noticia-inner{
+		padding: 0 !important;
+		border-top: 0;
+	}
+	
+	.noticia-details{
+		margin-top: 0 !important;
+	}	

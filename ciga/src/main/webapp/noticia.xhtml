@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<!-- Na composição tudo que está fora da tag é ignorado -->
+	<ui:composition template="/layout/layout_interno.xhtml">
+
+		<ui:define name="principal">
+		
+			<!-- Page Header -->
+			<section id="home" class="page_header">
+				<!-- Inner -->
+				<div class="page_header_inner clearfix">
+					<!-- Left -->
+					<div class="p_head_left f-left">
+						<!-- Header -->
+						<h1 class="p-header oswald uppercase">
+							Destaques
+						</h1>
+						<!-- Description -->
+						<p class="p-desc">
+							Fique por dentro das notícias do agronegócio
+						</p>
+					</div>
+					<!-- Right -->
+					<div class="p_head_right f-left t-right">
+						<!-- Back Button -->
+						<a href="javascript:history.back()" class="ex-link p-head-button uppercase">
+							<i class="fa fa-angle-left"></i>
+							voltar
+						</a>
+					</div>
+				</div><!-- End Inner -->
+			</section><!-- End Page Header -->
+		
+			<!-- Project -->
+			<section id="project-section" class="project">
+		
+				<!-- Inner -->
+				<div class="project_inner t-center noticia-inner">
+					
+					<!-- Project Details -->
+					<div class="project-detail-columns clearfix t-left noticia-details">
+						<!-- Project Description -->
+						<div class="col-xs-8 p-column">
+							<!-- Header -->
+							<h3 class="p-head">
+								<h:outputText value="#{noticiasBean.noticia.titulo}"/>
+							</h3>
+							<!-- Description -->
+							<ui:repeat var="par" value="#{noticiasBean.noticia.paragrafos}">
+								<p class="p-text t-justify" style="text-indent: 40px;" >#{par}</p>
+							</ui:repeat>
+							<p style="font-style: italic;">Fonte: Sistema Brasileiro do Agronegócio</p>
+						</div>
+						<!-- End Project Description -->
+		
+						<!-- Project Right Area -->
+						<div class="col-xs-4 p-column">
+							<!-- Header -->
+							<h3 class="p-head">
+								Últimas notícias
+							</h3>
+							<!-- Project Properties -->
+							<ul class="project_features">
+								<ui:repeat var="un" value="#{noticiasBean.ultimasNoticias}">
+									<!-- Part -->
+									<li class="p-feature">
+										<!-- Name -->
+										<h4 class="bold">
+											<h:outputLink value="noticia.xhtml?id=#{un.id}">#{un.titulo}</h:outputLink>
+										</h4>
+										<!-- Feature -->
+										<p class="normal">
+											#{un.resumo}
+										</p>
+									</li>
+									<!-- End Part -->
+								</ui:repeat>
+							</ul>
+							<!-- End Project Properties -->
+						</div>
+						<!-- End Project Right Area -->
+					</div>
+					<!-- End Project Details -->
+					
+				</div><!-- End Inner -->
+				
+			</section><!-- End Project -->
+			
+		
+		</ui:define>
+		
+		
+	</ui:composition>
+	
+</h:body>
+</html>

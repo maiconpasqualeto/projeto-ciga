@@ -5,6 +5,7 @@ package br.com.sixinf.ciga;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -27,6 +28,7 @@ import br.com.sixinf.ciga.dao.CigaDAO;
 import br.com.sixinf.ciga.entidades.Cotacao;
 import br.com.sixinf.ciga.entidades.Noticia;
 import br.com.sixinf.ciga.entidades.TipoCotacao;
+import br.com.sixinf.ferramentas.Utilitarios;
 import br.com.sixinf.ferramentas.log.LoggerException;
 
 /**
@@ -84,13 +86,21 @@ public class CigaFacade {
 				    	Noticia n = new Noticia();			    	
 				    	n.setDataHora(sdf.parse(data));
 				    	n.setTitulo(titulo);
-				    	n.setDescricao(excerpt);
+				    	n.setResumo(excerpt);
 				    	n.setFonte("SBA1");
 				    	n.setLink(link);
 				    	
 				    	boolean jaExiteNoticia = CigaDAO.getInstance().jaExiteNoticia(n.getTitulo(), n.getDataHora());
-				    	if (!jaExiteNoticia)
-				    		CigaDAO.getInstance().adicionar(n);
+				    	if (!jaExiteNoticia) {
+				    		// http://www.sba1.com/noticias/56645/queda-na-oferta-e-maior-demanda-elevam-precos-dos-ovos
+				    		String subs = link.substring(link.indexOf("/noticias/") + 10);
+				    		String idNoticia = subs.substring(0, link.indexOf('/'));
+				    		String texto = buscaTextoCompletoNoticia(idNoticia);
+				    		if (!texto.isEmpty()) {
+					    		n.setDescricao(texto);
+					    		CigaDAO.getInstance().adicionar(n);
+				    		}
+				    	}
 				    	
 				    }
 				    
@@ -104,6 +114,56 @@ public class CigaFacade {
 			Logger.getLogger(getClass()).error("Erro de IO ao buscar notícias", e);
 		}
 		
+	}
+	
+	
+	/**
+	 * 
+	 * @param idNoticia
+	 */
+	private String buscaTextoCompletoNoticia (String idNoticia) {
+		StringBuilder str = new StringBuilder();
+		
+		try {
+			
+			int timeout = 15; // 15 segundos
+			
+			RequestConfig config = RequestConfig.custom()
+					  .setConnectTimeout(timeout * 1000)
+					  .setConnectionRequestTimeout(timeout * 1000)
+					  .setSocketTimeout(timeout * 1000).build();
+			CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+			
+			HttpGet httpGet = new HttpGet("http://www.sba1.com/noticias/" + idNoticia);
+		
+			
+			CloseableHttpResponse response = httpclient.execute(httpGet);
+			try {
+				
+			    if (response.getStatusLine().getStatusCode() == 200) {
+			    
+				    HttpEntity entity = response.getEntity();
+				    
+				    String pagina = EntityUtils.toString(entity);
+				    Document doc = Jsoup.parse(pagina);
+				    Element el = doc.getElementsByClass("single").get(0);
+				    Elements els = el.getElementsByTag("p");
+				    
+				    for (Element e : els) {
+				    	String text = e.text();
+				    	if (text.startsWith("Fonte"))
+				    		break;
+				    	str.append(e.text() + "\r\n");
+				    }
+			    }
+			
+			} finally {
+			    response.close();
+			}
+		} catch (IOException e) {
+			Logger.getLogger(getClass()).error("Erro de IO ao buscar notícias", e);
+		}
+		return str.toString();
 	}
 	
 	

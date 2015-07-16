@@ -1159,9 +1159,9 @@
 								<h1 class="white">
 									<span class="colored bold"><h:outputText value="#{noticia.titulo}"/></span>
 								</h1> <!-- Author -->
-								<p class="white t-justify"><h:outputText value="#{noticia.descricao}"/></p>
+								<p class="white t-justify"><h:outputText value="#{noticia.resumo}"/></p>
 								<p class="author uppercase"><h:outputText value="#{noticia.fonte}"/> | <h:outputText value="#{noticia.dataHoraCompleta}"/> </p>								
-								<h:outputLink styleClass="uppercase normal oswald white darkgrey button" value="#{noticia.link}" target="_blank">Leia mais</h:outputLink>
+								<h:outputLink styleClass="uppercase normal oswald white darkgrey button" value="noticia.xhtml?id=#{noticia.id}">Leia mais</h:outputLink>
 							</li>
 						</ui:repeat>
 						
