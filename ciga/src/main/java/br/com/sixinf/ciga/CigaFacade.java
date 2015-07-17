@@ -5,7 +5,6 @@ package br.com.sixinf.ciga;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -28,7 +27,6 @@ import br.com.sixinf.ciga.dao.CigaDAO;
 import br.com.sixinf.ciga.entidades.Cotacao;
 import br.com.sixinf.ciga.entidades.Noticia;
 import br.com.sixinf.ciga.entidades.TipoCotacao;
-import br.com.sixinf.ferramentas.Utilitarios;
 import br.com.sixinf.ferramentas.log.LoggerException;
 
 /**
@@ -283,8 +281,8 @@ public class CigaFacade {
 					
 					SimpleEmail email = new SimpleEmail();  
 			        email.setHostName("email-ssl.com.br"); // o servidor SMTP para envio do e-mail  
-			        email.addTo("webmaster@cigaconsultoria.com.br", "Site Ciga Consultoria"); //destinatário  
-			        email.setFrom("webmaster@cigaconsultoria.com.br", "Ciga Consultoria"); // destinatário
+			        email.addTo("contato@cigaconsultoria.com.br", "Site Ciga Consultoria"); //destinatário  
+			        email.setFrom("webmaster@cigaconsultoria.com.br", "Ciga Consultoria"); 
 			        email.setSubject(assunto); // assunto do e-mail  
 			        email.setMsg(mensagem); //conteudo do e-mail  
 			        email.setAuthentication("webmaster@cigaconsultoria.com.br", "mariana123!@");  
