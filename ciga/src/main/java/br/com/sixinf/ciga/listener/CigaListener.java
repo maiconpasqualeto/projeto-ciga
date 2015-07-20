@@ -21,7 +21,7 @@ import br.com.sixinf.ferramentas.persistencia.PersistenciaException;
  */
 public class CigaListener implements ServletContextListener {
 	
-	private Timer timer = new Timer();
+	private Timer timer = new Timer("Timer atualiza Noticias");
 
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
@@ -42,7 +42,7 @@ public class CigaListener implements ServletContextListener {
 		}
 		
 		TimerTask tt = new TimerAtualizaDados();
-		timer.schedule(tt, 3000, 86400000); // 24 horas
+		timer.schedule(tt, 3000, 3600*1000); // 24 horas
 		
 	}
 
