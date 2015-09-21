@@ -42,7 +42,7 @@ public class CigaListener implements ServletContextListener {
 		}
 		
 		TimerTask tt = new TimerAtualizaDados();
-		timer.schedule(tt, 3000, 3600*1000); // 24 horas
+		timer.schedule(tt, 3000, 3600*1000); // 1 hora
 		
 	}
 

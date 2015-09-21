@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -69,7 +70,7 @@ public class CigaFacade {
 				    String pagina = EntityUtils.toString(entity);
 				    Document doc = Jsoup.parse(pagina);
 				    Elements els = doc.getElementsByTag("article");
-				    SimpleDateFormat sdf = new SimpleDateFormat("dd' de 'MMM' de 'yyyy' - 'HH'h'");
+				    SimpleDateFormat sdf = new SimpleDateFormat("dd' de 'MMM' de 'yyyy' - 'HH'h'", new Locale("pt", "BR"));
 				    
 				    for (Element el: els) {
 				    	Elements titulos = el.getElementsByClass("title");
