@@ -86,7 +86,7 @@ public class CigaFacade {
 				    	n.setDataHora(sdf.parse(data));
 				    	n.setTitulo(titulo);
 				    	n.setResumo(excerpt);
-				    	n.setFonte("SBA1");
+				    	n.setFonte("Sistema Brasileiro do Agronegócio");
 				    	n.setLink(link);
 				    	
 				    	boolean jaExiteNoticia = CigaDAO.getInstance().jaExiteNoticia(n.getTitulo(), n.getDataHora());
@@ -170,9 +170,13 @@ public class CigaFacade {
 	 * 
 	 */
 	public void atualizarCotacoes() {
-		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.BOI_GORDO);
-		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.VACA_GORDA);
-		CigaFacade.getInstance().atualizarCotacao(TipoCotacao.SOJA_SACA);
+		atualizarCotacao(TipoCotacao.BOI_GORDO);
+		atualizarCotacao(TipoCotacao.VACA_GORDA);
+		atualizarCotacao(TipoCotacao.SOJA_SACA);
+		
+		atualizarCotacaoBMF(TipoCotacao.BEZERRO_MACHO);
+		atualizarCotacaoBMF(TipoCotacao.NOVILHA);
+		atualizarCotacaoBMF(TipoCotacao.MILHO_SACA);		
 	}
 	
 	/**
@@ -196,7 +200,9 @@ public class CigaFacade {
 				break;
 			case SOJA_SACA:
 				url += "soja/";
-				break;				
+				break;
+			default:
+				throw new UnsupportedOperationException("Tipo de cotação não existe no site ");
 		}
 		
 		HttpGet httpGet = new HttpGet(url);
@@ -212,6 +218,93 @@ public class CigaFacade {
 				    String pagina = EntityUtils.toString(entity);
 				    Document doc = Jsoup.parse(pagina);
 				    Elements els = doc.getElementsByClass("cotacao-table").get(0).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+				    				    
+				    boolean primeiro = true;
+				    for (Element el: els) {
+				    	Elements children = el.children();
+				    	
+			    		int idx = 0;
+			    		
+			    		// pula essa linha:
+				    	// <td class="cotacao-table__data-type" rowspan="31"><p>MERCADO FÍSICO<span>@ (exceto se indicado)</span></p></td>
+				    	if (primeiro) {
+				    		idx++;
+				    		primeiro = false;
+				    	}
+				    	
+				    	String uf = children.get(idx++).text();
+				    	String praca = children.get(idx++).text();
+				    	String valorAVista = children.get(idx++).text();
+				    	String valorAPrazo = children.get(idx++).text();
+				    	
+				    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
+				    	
+				    	if (c == null) {				    	
+				    		c = new Cotacao();
+				    		c.setTipoCotacao(tipoCotacao);
+					    	c.setUf(uf);
+					    	c.setPraca(praca);
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	
+					    	CigaDAO.getInstance().adicionar(c);
+					    	
+				    	} else {
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	
+					    	CigaDAO.getInstance().atualizaCotacao(c);
+				    	}
+				    	
+				    }
+				    
+			    }
+			} catch (LoggerException e) {
+				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
+			} finally {
+			    response.close();
+			}
+		} catch (IOException e) {
+			Logger.getLogger(getClass()).error("Erro de IO ao buscar cotações", e);
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void atualizarCotacaoBMF(TipoCotacao tipoCotacao) {
+		int timeout = 15; // 15 segundos
+		RequestConfig config = RequestConfig.custom()
+				  .setConnectTimeout(timeout * 1000)
+				  .setConnectionRequestTimeout(timeout * 1000)
+				  .setSocketTimeout(timeout * 1000).build();
+		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+		
+		String url = "http://www2.bmf.com.br/pages/portal/bmfbovespa/boletim1/indicadoresAgropecuarios1.asp";
+				
+		HttpGet httpGet = new HttpGet(url);
+		try {
+			
+			CloseableHttpResponse response = httpclient.execute(httpGet);
+			try {
+				
+			    if (response.getStatusLine().getStatusCode() == 200) {
+			    
+				    HttpEntity entity = response.getEntity();
+				    
+				    String pagina = EntityUtils.toString(entity);
+				    Document doc = Jsoup.parse(pagina);
+				    
+				    switch (tipoCotacao) {
+					    case BEZERRO_MACHO:
+					    	Elements els = doc.getElementsByTag("table").get(5).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+					    	break;
+					    default:
+					    	break;
+				    }
+				    
+				    
+				    Elements els = doc.getElementsByTag("table").get(0).getElementsByTag("tbody").get(0).getElementsByTag("tr");
 				    				    
 				    boolean primeiro = true;
 				    for (Element el: els) {

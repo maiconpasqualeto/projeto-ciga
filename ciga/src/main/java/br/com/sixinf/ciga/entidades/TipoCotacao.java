@@ -11,5 +11,8 @@ public enum TipoCotacao {
 
 	BOI_GORDO,
 	VACA_GORDA,
-	SOJA_SACA;
+	SOJA_SACA,
+	MILHO_SACA,
+	BEZERRO_MACHO,
+	NOVILHA;
 }
