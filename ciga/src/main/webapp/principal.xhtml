@@ -927,7 +927,10 @@
 				<div class="inner facts">
 					<!-- Header -->
 					<h1 class="header white uppercase dark oswald">Cotações do mercado agropecuário</h1>
-					<p class="white t-center">Mato Grosso do Sul</p>
+					<p class="white t-center">
+						Praça: Mato Grosso do Sul<br/>
+						Fonte: Scot Consultoria
+					</p>
 					<!-- Header Strip(s) -->
 					<div class="header-strips-one"></div>
 					<!-- Facts -->					
@@ -935,32 +938,35 @@
 												
 						<!-- Fact -->
 						<h:panelGroup styleClass="fact" layout="block">
-							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBoi.valorAVistaFormatado}"/>
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBezerro.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
 							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
-							<h3>@ <br></br> Bezerro Macho </h3>
+							<h3>Bezerro Macho</h3>
+							<p>Cabeça</p>
 						</h:panelGroup>
 						
 						<!-- Fact -->
 						<h:panelGroup styleClass="fact" layout="block">
-							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoVaca.valorAVistaFormatado}"/>
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoNovilha.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
 							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
-							<h3>@ <br></br> Novilha </h3>
+							<h3>Novilha</h3>
+							<p>cabeça</p>
 						</h:panelGroup>
 
 						<!-- Fact -->
 						<h:panelGroup styleClass="fact" layout="block">
-							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoSoja.valorAVistaFormatado}"/>
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoMilho.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
 							R$
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
-							<h3>saca <br></br> milho </h3>
+							<h3>Milho</h3>
+							<p>saca</p>
 						</h:panelGroup>
 						
 					</div>					

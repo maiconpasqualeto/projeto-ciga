@@ -170,13 +170,17 @@ public class CigaFacade {
 	 * 
 	 */
 	public void atualizarCotacoes() {
-		atualizarCotacao(TipoCotacao.BOI_GORDO);
-		atualizarCotacao(TipoCotacao.VACA_GORDA);
-		atualizarCotacao(TipoCotacao.SOJA_SACA);
+		// problema para acessar sites https
+		System.setProperty("jsse.enableSNIExtension", "false");
 		
-		atualizarCotacaoBMF(TipoCotacao.BEZERRO_MACHO);
-		atualizarCotacaoBMF(TipoCotacao.NOVILHA);
-		atualizarCotacaoBMF(TipoCotacao.MILHO_SACA);		
+		//atualizarCotacao(TipoCotacao.BOI_GORDO);
+		//atualizarCotacao(TipoCotacao.VACA_GORDA);
+		//atualizarCotacao(TipoCotacao.SOJA_SACA);
+		atualizarCotacaoScotEmb(TipoCotacao.MILHO_SACA);
+		
+		atualizarCotacaoScot(TipoCotacao.BEZERRO_MACHO);		
+		atualizarCotacaoScot(TipoCotacao.NOVILHA);
+				
 	}
 	
 	/**
@@ -271,7 +275,7 @@ public class CigaFacade {
 	
 	/**
 	 * 
-	 */
+	 
 	public void atualizarCotacaoBMF(TipoCotacao tipoCotacao) {
 		int timeout = 15; // 15 segundos
 		RequestConfig config = RequestConfig.custom()
@@ -295,35 +299,111 @@ public class CigaFacade {
 				    String pagina = EntityUtils.toString(entity);
 				    Document doc = Jsoup.parse(pagina);
 				    
+				    Elements els = null;
+				    String uf = "MS";
+			    	String praca = "Campo Grande";
+				    
 				    switch (tipoCotacao) {
 					    case BEZERRO_MACHO:
-					    	Elements els = doc.getElementsByTag("table").get(5).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+					    	els = doc.getElementsByClass("tabConteudo").get(5).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+					    	uf = "SP";
+					    	praca = "Campinas";
 					    	break;
+					    //case MILHO_SACA:
+					   // 	els = doc.getElementsByClass("tabConteudo").get(1).getElementsByTag("tbody").get(0).getElementsByTag("tr");
+					   //	break;
 					    default:
-					    	break;
+					    	throw new UnsupportedOperationException("Tipo de cotação não existe no site ");
 				    }
+				    		    
+				    Elements children = els.get(els.size() - 2).children();
+			    				    	
+			    	String valorAVista = children.get(1).text();
+			    	String valorAPrazo = children.get(1).text();
+			    	
+			    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
+			    	
+			    	if (c == null) {				    	
+			    		c = new Cotacao();
+			    		c.setTipoCotacao(tipoCotacao);
+				    	c.setUf(uf);
+				    	c.setPraca(praca);
+				    	c.setValorAVista(new BigDecimal(valorAVista.replace(".", "").replace(',', '.')));
+				    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(".", "").replace(',', '.')));
+				    	
+				    	CigaDAO.getInstance().adicionar(c);
+				    	
+			    	} else {
+				    	c.setValorAVista(new BigDecimal(valorAVista.replace(".", "").replace(',', '.')));
+				    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(".", "").replace(',', '.')));
+				    	
+				    	CigaDAO.getInstance().atualizaCotacao(c);
+			    	}
+			    	
+			    }
+				 
+			} catch (LoggerException e) {
+				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
+			} finally {
+			    response.close();
+			}
+		} catch (IOException e) {
+			Logger.getLogger(getClass()).error("Erro de IO ao buscar cotações", e);
+		}
+	}*/
+	
+	
+	/**
+	 * 
+	 */
+	public void atualizarCotacaoScotEmb(TipoCotacao tipoCotacao) {
+		int timeout = 15; // 15 segundos
+		RequestConfig config = RequestConfig.custom()
+				  .setConnectTimeout(timeout * 1000)
+				  .setConnectionRequestTimeout(timeout * 1000)
+				  .setSocketTimeout(timeout * 1000).build();
+		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+		
+		String url = "https://www.scotconsultoria.com.br/embed/?q=";
+		
+		switch (tipoCotacao) {
+		    case MILHO_SACA:
+		    	url += "milho";
+		    	break;
+		    default:
+		    	throw new UnsupportedOperationException("Tipo de cotação não existe no site ");
+		}
+		
+		HttpGet httpGet = new HttpGet(url);
+		try {
+			
+			CloseableHttpResponse response = httpclient.execute(httpGet);
+			try {
+				
+			    if (response.getStatusLine().getStatusCode() == 200) {
+			    
+				    HttpEntity entity = response.getEntity();
 				    
+				    String pagina = EntityUtils.toString(entity);
+				    Document doc = Jsoup.parse(pagina);
 				    
-				    Elements els = doc.getElementsByTag("table").get(0).getElementsByTag("tbody").get(0).getElementsByTag("tr");
-				    				    
-				    boolean primeiro = true;
+				    Elements els = doc.getElementsByClass("fonte-subtitulo-cinza");
+				    
+				    String ufAnt = "";
+				    
 				    for (Element el: els) {
-				    	Elements children = el.children();
+				    	Elements children = el.getElementsByTag("tbody").get(0).getElementsByTag("tr").get(0).getElementsByTag("td");
 				    	
-			    		int idx = 0;
-			    		
-			    		// pula essa linha:
-				    	// <td class="cotacao-table__data-type" rowspan="31"><p>MERCADO FÍSICO<span>@ (exceto se indicado)</span></p></td>
-				    	if (primeiro) {
-				    		idx++;
-				    		primeiro = false;
-				    	}
-				    	
-				    	String uf = children.get(idx++).text();
-				    	String praca = children.get(idx++).text();
-				    	String valorAVista = children.get(idx++).text();
-				    	String valorAPrazo = children.get(idx++).text();
-				    	
+				    	String uf = children.get(0).text();
+				    	if (!uf.isEmpty())
+				    		ufAnt = uf;
+				    	else
+				    		uf = ufAnt;
+				    		
+				    	String praca = children.get(1).text();
+				    	String valorAVista = children.get(2).text();
+				    	String valorAPrazo = children.get(2).text();
+					    
 				    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
 				    	
 				    	if (c == null) {				    	
@@ -331,21 +411,105 @@ public class CigaFacade {
 				    		c.setTipoCotacao(tipoCotacao);
 					    	c.setUf(uf);
 					    	c.setPraca(praca);
-					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
-					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(".", "").replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(".", "").replace(',', '.')));
 					    	
 					    	CigaDAO.getInstance().adicionar(c);
 					    	
 				    	} else {
-					    	c.setValorAVista(new BigDecimal(valorAVista.replace(',', '.')));
-					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(',', '.')));
+					    	c.setValorAVista(new BigDecimal(valorAVista.replace(".", "").replace(',', '.')));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo.replace(".", "").replace(',', '.')));
 					    	
 					    	CigaDAO.getInstance().atualizaCotacao(c);
 				    	}
 				    	
 				    }
-				    
 			    }
+				 
+			} catch (LoggerException e) {
+				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
+			} finally {
+			    response.close();
+			}
+		} catch (IOException e) {
+			Logger.getLogger(getClass()).error("Erro de IO ao buscar cotações", e);
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void atualizarCotacaoScot(TipoCotacao tipoCotacao) {
+		int timeout = 15; // 15 segundos
+		RequestConfig config = RequestConfig.custom()
+				  .setConnectTimeout(timeout * 1000)
+				  .setConnectionRequestTimeout(timeout * 1000)
+				  .setSocketTimeout(timeout * 1000).build();
+		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+		
+		String url = "https://www.scotconsultoria.com.br/cotacoes/reposicao";
+		
+		HttpGet httpGet = new HttpGet(url);
+		try {
+			
+			CloseableHttpResponse response = httpclient.execute(httpGet);
+			try {
+				
+			    if (response.getStatusLine().getStatusCode() == 200) {
+			    
+				    HttpEntity entity = response.getEntity();
+				    
+				    String pagina = EntityUtils.toString(entity);
+				    Document doc = Jsoup.parse(pagina);
+				    
+				    int idxTab = 0;
+				    
+				    switch (tipoCotacao) {
+					    case BEZERRO_MACHO:
+					    	idxTab = 1; 
+					    	break;
+					    case NOVILHA:
+					    	idxTab = 3; 
+					    	break;
+					    default:
+					    	throw new UnsupportedOperationException("Tipo de cotação não existe no site ");
+					}
+				    
+				    Elements els = doc.getElementsByClass("conteudo_centro").get(0).getElementsByTag("table").get(idxTab).getElementsByClass("conteudo");
+				    				    				    
+				    for (Element el: els) {
+				    	if ("conteudo final".equals(el.className()))
+				    		continue;
+				    	
+				    	Elements children = el.children();
+				    	
+				    	String uf = children.get(0).text().substring(0, 2);
+				    	String praca = uf;
+				    	String valorAVista = children.get(7).text() + "0";
+				    	String valorAPrazo = children.get(7).text() + "0";
+					    
+				    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
+				    	
+				    	if (c == null) {				    	
+				    		c = new Cotacao();
+				    		c.setTipoCotacao(tipoCotacao);
+					    	c.setUf(uf);
+					    	c.setPraca(praca);
+					    	c.setValorAVista(new BigDecimal(valorAVista));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo));
+					    	
+					    	CigaDAO.getInstance().adicionar(c);
+					    	
+				    	} else {
+					    	c.setValorAVista(new BigDecimal(valorAVista));
+					    	c.setValorAPrazo(new BigDecimal(valorAPrazo));
+					    	
+					    	CigaDAO.getInstance().atualizaCotacao(c);
+				    	}
+				    	
+				    }
+			    }
+				 
 			} catch (LoggerException e) {
 				Logger.getLogger(getClass()).error("Erro ao atualizar notícias", e);
 			} finally {

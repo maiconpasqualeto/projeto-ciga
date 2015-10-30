@@ -30,6 +30,9 @@ public class PrincipalBean implements Serializable {
 	private Cotacao cotacaoBoi;
 	private Cotacao cotacaoVaca;
 	private Cotacao cotacaoSoja;
+	private Cotacao cotacaoBezerro;
+	private Cotacao cotacaoNovilha;
+	private Cotacao cotacaoMilho;
 	private String contatoNome;
 	private String contatoEmail;
 	private String contatoAssunto;
@@ -38,9 +41,12 @@ public class PrincipalBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		noticias = CigaDAO.getInstance().buscarUltimasNoticias();
-		cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
+		/*cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
 		cotacaoVaca = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
-		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);
+		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);*/
+		cotacaoBezerro = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_MACHO);
+		cotacaoMilho = CigaDAO.getInstance().buscarCotacao("MS", "Campo Grande", TipoCotacao.MILHO_SACA);
+		cotacaoNovilha = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.NOVILHA);
 	}
 	
 	public void enviarEmailContato() {
@@ -117,6 +123,30 @@ public class PrincipalBean implements Serializable {
 
 	public void setCotacaoSoja(Cotacao cotacaoSoja) {
 		this.cotacaoSoja = cotacaoSoja;
+	}
+
+	public Cotacao getCotacaoBezerro() {
+		return cotacaoBezerro;
+	}
+
+	public void setCotacaoBezerro(Cotacao cotacaoBezerro) {
+		this.cotacaoBezerro = cotacaoBezerro;
+	}
+
+	public Cotacao getCotacaoNovilha() {
+		return cotacaoNovilha;
+	}
+
+	public void setCotacaoNovilha(Cotacao cotacaoNovilha) {
+		this.cotacaoNovilha = cotacaoNovilha;
+	}
+
+	public Cotacao getCotacaoMilho() {
+		return cotacaoMilho;
+	}
+
+	public void setCotacaoMilho(Cotacao cotacaoMilho) {
+		this.cotacaoMilho = cotacaoMilho;
 	}
 	
 }
