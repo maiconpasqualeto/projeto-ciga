@@ -935,7 +935,42 @@
 					<div class="header-strips-one"></div>
 					<!-- Facts -->					
 					<div class="facts colored t-center oswald uppercase">
-												
+						<!-- Fact -->
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBoi.valorAVistaFormatado}"/>
+							<!-- Fact Tag -->
+							R$
+							<h1 class="factor"></h1>
+							<!-- Fact Name -->
+							<h3> boi gordo </h3>
+							<p> @ </p>
+							
+						</h:panelGroup>
+						
+						<!-- Fact -->
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoVaca.valorAVistaFormatado}"/>
+							<!-- Fact Tag -->
+							R$
+							<h1 class="factor"></h1>
+							<!-- Fact Name -->
+							<h3> vaca gorda </h3>
+							<p> @ </p>
+						</h:panelGroup>
+
+						<!-- Fact -->
+						<h:panelGroup styleClass="fact" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoSoja.valorAVistaFormatado}"/>
+							<!-- Fact Tag -->
+							R$
+							<h1 class="factor"></h1>
+							<!-- Fact Name -->
+							<h3>soja </h3>
+							<p> saca </p>
+						</h:panelGroup>
+					</div>
+					<div class="facts colored t-center oswald uppercase">
+						
 						<!-- Fact -->
 						<h:panelGroup styleClass="fact" layout="block">
 							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBezerro.valorAVistaFormatado}"/>
@@ -944,7 +979,7 @@
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
 							<h3>Bezerro Macho</h3>
-							<p>Cabeça</p>
+							<p> Cabeça </p>
 						</h:panelGroup>
 						
 						<!-- Fact -->
@@ -955,7 +990,7 @@
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
 							<h3>Novilha</h3>
-							<p>cabeça</p>
+							<p> cabeça </p>
 						</h:panelGroup>
 
 						<!-- Fact -->
@@ -966,10 +1001,10 @@
 							<h1 class="factor"></h1>
 							<!-- Fact Name -->
 							<h3>Milho</h3>
-							<p>saca</p>
+							<p> saca </p>
 						</h:panelGroup>
 						
-					</div>					
+					</div>
 										
 					<!-- Load More Button -->
 					<div class="col-xs-12 t-center">
@@ -1314,38 +1349,62 @@
 				<section id="address" class="container soft-bg-1 parallax7">
 					<!-- Inner -->
 					<div class="inner">
-						<!-- Address Soft Area -->
+						<!-- Address Soft Area -->												
 						<div class="address-soft t-center">
-			
-							<!-- Top Phone Button -->
-							<a href="tel:0216730277543" class="phone-button round white">
-								<i class="fa fa-phone"></i>
-							</a>
-			
-							<!-- Phone -->
-							<h1 class="phone-text oswald white">
-								(67) 3432-1111
-							</h1>
-			
-							<!-- Address -->
-							<h2 class="phone-text oswald uppercase">
-								Rua Baltazar Saldanha, 1111 - Centro
-							</h2>
-							<h2 class="phone-text oswald uppercase">
-								Ponta Porã - MS - CEP 79.904-544
-							</h2>
-			
+						
+							<div class="col-xs-6 left">
+								<h1>Campo Grande</h1>
+								<!-- Top Phone Button -->
+								<a href="tel:0216730277543" class="phone-button round white">
+									<i class="fa fa-phone"></i>
+								</a>
+				
+								<!-- Phone -->
+								<h2 class="phone-text oswald green">
+									(67) 3027-7543
+								</h2>
+				
+								<!-- Address -->
+								<h2 class="phone-text oswald uppercase">
+									Rua João de Oliveira Lima, 123
+								</h2>
+								<h2 class="phone-text oswald uppercase">
+									Campo Grande - MS 
+								</h2>
+								
+							</div>
+							<div class="col-xs-6 left" style="margin-bottom: 20px;">			
+								<h1>Ponta Porã</h1>
+								<!-- Top Phone Button -->
+								<a href="tel:0216730277543" class="phone-button round white">
+									<i class="fa fa-phone"></i>
+								</a>
+				
+								<!-- Phone -->
+								<h2 class="phone-text oswald green">
+									(67) 3432-1111
+								</h2>
+				
+								<!-- Address -->
+								<h2 class="phone-text oswald uppercase">
+									Rua Baltazar Saldanha, 1111 - Centro
+								</h2>
+								<h2 class="phone-text oswald uppercase">
+									Ponta Porã - MS - CEP 79.904-544
+								</h2>
+								
+							</div>
+							
 							<!-- E-Mail -->
 							<a href="mailto:contato@cigaconsultoria.com.br" class="mail-text uppercase oswald">
 								contato@cigaconsultoria.com.br
 							</a>
-			
+							
 							<!-- Social, Facebook -->
 							<a href="https://www.facebook.com/cigaconsultoria?ref=aymt_homepage_panel" target="_blank" class="social round dark-bg facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
-			
-			
+							
 						</div><!-- End Address Soft Area -->
 					</div><!-- End Inner -->
 				</section><!-- End Address Section -->

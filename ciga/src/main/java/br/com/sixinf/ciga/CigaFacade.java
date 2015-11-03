@@ -173,11 +173,11 @@ public class CigaFacade {
 		// problema para acessar sites https
 		System.setProperty("jsse.enableSNIExtension", "false");
 		
-		//atualizarCotacao(TipoCotacao.BOI_GORDO);
-		//atualizarCotacao(TipoCotacao.VACA_GORDA);
-		//atualizarCotacao(TipoCotacao.SOJA_SACA);
-		atualizarCotacaoScotEmb(TipoCotacao.MILHO_SACA);
+		atualizarCotacao(TipoCotacao.BOI_GORDO);
+		atualizarCotacao(TipoCotacao.VACA_GORDA);
+		atualizarCotacao(TipoCotacao.SOJA_SACA);
 		
+		atualizarCotacaoScotEmb(TipoCotacao.MILHO_SACA);		
 		atualizarCotacaoScot(TipoCotacao.BEZERRO_MACHO);		
 		atualizarCotacaoScot(TipoCotacao.NOVILHA);
 				

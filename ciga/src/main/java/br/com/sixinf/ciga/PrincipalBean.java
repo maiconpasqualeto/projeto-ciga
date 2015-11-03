@@ -41,9 +41,9 @@ public class PrincipalBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		noticias = CigaDAO.getInstance().buscarUltimasNoticias();
-		/*cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
+		cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
 		cotacaoVaca = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
-		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);*/
+		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);
 		cotacaoBezerro = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_MACHO);
 		cotacaoMilho = CigaDAO.getInstance().buscarCotacao("MS", "Campo Grande", TipoCotacao.MILHO_SACA);
 		cotacaoNovilha = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.NOVILHA);

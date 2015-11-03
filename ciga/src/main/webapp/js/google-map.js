@@ -8,7 +8,7 @@ GOOGLE MAP
 
 			// Map Coordination
 
-			var latlng = new google.maps.LatLng(-22.526201,-55.725489);
+			var latlng = new google.maps.LatLng(-20.442629, -54.594831);
 
 			// Map Options
 			var myOptions = {
@@ -33,7 +33,7 @@ GOOGLE MAP
 
 		  	// First Marker Coordination
 			
-			var myLatlng = new google.maps.LatLng(-22.526201,-55.725489);
+			var myLatlng = new google.maps.LatLng(-20.443353, -54.595089);
 
 			// Your Texts 
 
@@ -46,11 +46,11 @@ GOOGLE MAP
 
 			  '</h4>' +
 			  
-			  'Rua Baltazar Saldanha, 1111 - Centro <br/>Ponta Porã - MS - CEP 79.904-544' +
+			  'Rua João de Oliveira Lima, 123 <br/>Campo Grande - MS' +
 			  
 			  '<p>' +
 			  
-			  '(67) 3432-1111' +
+			  '(67) 3027-7543' +
 			  
 			  '</p>' +
 			  
