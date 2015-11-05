@@ -104,7 +104,7 @@ public class Cotacao implements Entidade, Serializable {
 	 * @return
 	 */
 	public String getValorAVistaFormatado() {
-		DecimalFormat df = new DecimalFormat("##");
+		DecimalFormat df = new DecimalFormat("##0.00");
 		return df.format(getValorAVista().floatValue());
 	}
 
