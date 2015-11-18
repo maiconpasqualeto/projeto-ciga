@@ -936,8 +936,8 @@
 					<!-- Facts -->					
 					<div class="facts colored t-center oswald uppercase">
 						<!-- Fact -->
-						<h:panelGroup styleClass="fact" layout="block">
-							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBoi.valorAVistaFormatado}"/>
+						<h:panelGroup styleClass="fact cotacao-boi" layout="block">
+							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBoiCgr.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
 							R$
 							<h1 class="factor"></h1>
@@ -972,7 +972,7 @@
 					<div class="facts colored t-center oswald uppercase">
 						
 						<!-- Fact -->
-						<h:panelGroup styleClass="fact" layout="block">
+						<h:panelGroup styleClass="fact" layout="block" data-toggle="modal" data-target="#modalBoi">
 							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoBezerro.valorAVistaFormatado}"/>
 							<!-- Fact Tag -->
 							R$
@@ -981,7 +981,6 @@
 							<h3>Bezerro Macho</h3>
 							<p> Cabeça </p>
 						</h:panelGroup>
-						
 						<!-- Fact -->
 						<h:panelGroup styleClass="fact" layout="block">
 							<f:passThroughAttribute name="data-perc" value="#{principalBean.cotacaoNovilha.valorAVistaFormatado}"/>
@@ -1004,6 +1003,47 @@
 							<p> saca </p>
 						</h:panelGroup>
 						
+					</div>
+					
+					<!-- Modal -->
+					<div class="modal fade" id="modal-boi" tabindex="-1" role="dialog" aria-labelledby="modalBoiLabel">
+					  <div class="modal-dialog modal-ciga" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Cotação Boi Gordo</h4>
+					      </div>
+					      <div class="modal-body">
+					        <table class="table table-bordered table-striped" >
+					        	<thead>
+					        		<tr><th>Cidade</th><th>à vista</th><th>30 dias</th></tr>
+					        	</thead>
+					        	<tbody>					        		
+					        		<tr>
+					        			<td>Campo Grande</td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiCgr.valorAVistaFormatado}" /></td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiCgr.valorAPrazoFormatado}" /></td>
+					        		</tr>
+					        		<tr>
+					        			<td>Dourados</td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiDd.valorAVistaFormatado}" /></td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiDd.valorAPrazoFormatado}" /></td>
+					        		</tr>
+					        		<tr>
+					        			<td>Três Lagoas</td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiTresL.valorAVistaFormatado}" /></td>
+					        			<td><h:outputText value="#{principalBean.cotacaoBoiTresL.valorAPrazoFormatado}" /></td>
+					        		</tr>
+					        	</tbody>
+					        </table>					        	
+					        	
+					        
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
 					</div>
 										
 					<!-- Load More Button -->

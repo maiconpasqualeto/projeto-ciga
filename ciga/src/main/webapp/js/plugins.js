@@ -717,3 +717,8 @@ MOBILE NAV BUTTON
 			$(".nav-menu").slideToggle("2000")
 		}
 	});
+	
+	
+	$('.cotacao-boi').bind('click', function(event) {
+		$("#modal-boi").modal('show');
+	});

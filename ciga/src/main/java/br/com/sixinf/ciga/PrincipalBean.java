@@ -27,7 +27,9 @@ public class PrincipalBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<Noticia> noticias = new ArrayList<Noticia>();
-	private Cotacao cotacaoBoi;
+	private Cotacao cotacaoBoiCgr;
+	private Cotacao cotacaoBoiDd;
+	private Cotacao cotacaoBoiTresL;
 	private Cotacao cotacaoVaca;
 	private Cotacao cotacaoSoja;
 	private Cotacao cotacaoBezerro;
@@ -41,7 +43,9 @@ public class PrincipalBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		noticias = CigaDAO.getInstance().buscarUltimasNoticias();
-		cotacaoBoi = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
+		cotacaoBoiCgr = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
+		cotacaoBoiDd = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.BOI_GORDO);
+		cotacaoBoiTresL = CigaDAO.getInstance().buscarCotacao("MS", "Três Lagoas", TipoCotacao.BOI_GORDO);
 		cotacaoVaca = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
 		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);
 		cotacaoBezerro = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_MACHO);
@@ -101,12 +105,28 @@ public class PrincipalBean implements Serializable {
 		this.contatoMensagem = contatoMensagem;
 	}
 
-	public Cotacao getCotacaoBoi() {
-		return cotacaoBoi;
+	public Cotacao getCotacaoBoiCgr() {
+		return cotacaoBoiCgr;
 	}
 
-	public void setCotacaoBoi(Cotacao cotacaoBoi) {
-		this.cotacaoBoi = cotacaoBoi;
+	public void setCotacaoBoiCgr(Cotacao cotacaoBoiCgr) {
+		this.cotacaoBoiCgr = cotacaoBoiCgr;
+	}
+
+	public Cotacao getCotacaoBoiDd() {
+		return cotacaoBoiDd;
+	}
+
+	public void setCotacaoBoiDd(Cotacao cotacaoBoiDd) {
+		this.cotacaoBoiDd = cotacaoBoiDd;
+	}
+
+	public Cotacao getCotacaoBoiTresL() {
+		return cotacaoBoiTresL;
+	}
+
+	public void setCotacaoBoiTresL(Cotacao cotacaoBoiTresL) {
+		this.cotacaoBoiTresL = cotacaoBoiTresL;
 	}
 
 	public Cotacao getCotacaoVaca() {

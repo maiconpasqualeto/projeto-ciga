@@ -107,6 +107,15 @@ public class Cotacao implements Entidade, Serializable {
 		DecimalFormat df = new DecimalFormat("##0.00");
 		return df.format(getValorAVista().floatValue());
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getValorAPrazoFormatado() {
+		DecimalFormat df = new DecimalFormat("##0.00");
+		return df.format(getValorAPrazo().floatValue());
+	}
 
 	@Override
 	public Long getIdentificacao() {
