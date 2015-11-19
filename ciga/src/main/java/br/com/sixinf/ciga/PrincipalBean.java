@@ -30,10 +30,14 @@ public class PrincipalBean implements Serializable {
 	private Cotacao cotacaoBoiCgr;
 	private Cotacao cotacaoBoiDd;
 	private Cotacao cotacaoBoiTresL;
-	private Cotacao cotacaoVaca;
+	private Cotacao cotacaoVacaCgr;
+	private Cotacao cotacaoVacaDd;
+	private Cotacao cotacaoVacaTresL;
 	private Cotacao cotacaoSoja;
 	private Cotacao cotacaoBezerro;
+	private Cotacao cotacaoBezerroNelore;
 	private Cotacao cotacaoNovilha;
+	private Cotacao cotacaoNovilhaNelore;
 	private Cotacao cotacaoMilho;
 	private String contatoNome;
 	private String contatoEmail;
@@ -46,11 +50,15 @@ public class PrincipalBean implements Serializable {
 		cotacaoBoiCgr = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.BOI_GORDO);
 		cotacaoBoiDd = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.BOI_GORDO);
 		cotacaoBoiTresL = CigaDAO.getInstance().buscarCotacao("MS", "Três Lagoas", TipoCotacao.BOI_GORDO);
-		cotacaoVaca = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
+		cotacaoVacaCgr = CigaDAO.getInstance().buscarCotacao("MS", "C. Grande", TipoCotacao.VACA_GORDA);
+		cotacaoVacaDd = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.VACA_GORDA);
+		cotacaoVacaTresL = CigaDAO.getInstance().buscarCotacao("MS", "Três Lagoas", TipoCotacao.VACA_GORDA);
 		cotacaoSoja = CigaDAO.getInstance().buscarCotacao("MS", "Dourados", TipoCotacao.SOJA_SACA);
-		cotacaoBezerro = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_MACHO);
+		cotacaoBezerro = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_MESTICO);
+		cotacaoBezerroNelore = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.BEZERRO_NELORE);
 		cotacaoMilho = CigaDAO.getInstance().buscarCotacao("MS", "Campo Grande", TipoCotacao.MILHO_SACA);
-		cotacaoNovilha = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.NOVILHA);
+		cotacaoNovilha = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.NOVILHA_MESTICA);
+		cotacaoNovilhaNelore = CigaDAO.getInstance().buscarCotacao("MS", "MS", TipoCotacao.NOVILHA_NELORE);
 	}
 	
 	public void enviarEmailContato() {
@@ -129,12 +137,28 @@ public class PrincipalBean implements Serializable {
 		this.cotacaoBoiTresL = cotacaoBoiTresL;
 	}
 
-	public Cotacao getCotacaoVaca() {
-		return cotacaoVaca;
+	public Cotacao getCotacaoVacaCgr() {
+		return cotacaoVacaCgr;
 	}
 
-	public void setCotacaoVaca(Cotacao cotacaoVaca) {
-		this.cotacaoVaca = cotacaoVaca;
+	public void setCotacaoVacaCgr(Cotacao cotacaoVacaCgr) {
+		this.cotacaoVacaCgr = cotacaoVacaCgr;
+	}
+
+	public Cotacao getCotacaoVacaDd() {
+		return cotacaoVacaDd;
+	}
+
+	public void setCotacaoVacaDd(Cotacao cotacaoVacaDd) {
+		this.cotacaoVacaDd = cotacaoVacaDd;
+	}
+
+	public Cotacao getCotacaoVacaTresL() {
+		return cotacaoVacaTresL;
+	}
+
+	public void setCotacaoVacaTresL(Cotacao cotacaoVacaTresL) {
+		this.cotacaoVacaTresL = cotacaoVacaTresL;
 	}
 
 	public Cotacao getCotacaoSoja() {
@@ -167,6 +191,22 @@ public class PrincipalBean implements Serializable {
 
 	public void setCotacaoMilho(Cotacao cotacaoMilho) {
 		this.cotacaoMilho = cotacaoMilho;
+	}
+
+	public Cotacao getCotacaoBezerroNelore() {
+		return cotacaoBezerroNelore;
+	}
+
+	public void setCotacaoBezerroNelore(Cotacao cotacaoBezerroNelore) {
+		this.cotacaoBezerroNelore = cotacaoBezerroNelore;
+	}
+
+	public Cotacao getCotacaoNovilhaNelore() {
+		return cotacaoNovilhaNelore;
+	}
+
+	public void setCotacaoNovilhaNelore(Cotacao cotacaoNovilhaNelore) {
+		this.cotacaoNovilhaNelore = cotacaoNovilhaNelore;
 	}
 	
 }

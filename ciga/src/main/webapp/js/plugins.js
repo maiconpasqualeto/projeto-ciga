@@ -722,3 +722,23 @@ MOBILE NAV BUTTON
 	$('.cotacao-boi').bind('click', function(event) {
 		$("#modal-boi").modal('show');
 	});
+	
+	$('.cotacao-vaca').bind('click', function(event) {
+		$("#modal-vaca").modal('show');
+	});
+	
+	$('.cotacao-bezerro').bind('click', function(event) {
+		$("#modal-bezerro").modal('show');
+	});
+	
+	$('.cotacao-novilha').bind('click', function(event) {
+		$("#modal-novilha").modal('show');
+	});
+	
+	$('.cotacao-soja').bind('click', function(event) {
+		$("#modal-soja").modal('show');
+	});
+	
+	$('.cotacao-milho').bind('click', function(event) {
+		$("#modal-milho").modal('show');
+	});

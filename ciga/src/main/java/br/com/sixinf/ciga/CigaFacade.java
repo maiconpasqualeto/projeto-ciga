@@ -178,8 +178,10 @@ public class CigaFacade {
 		atualizarCotacao(TipoCotacao.SOJA_SACA);
 		
 		atualizarCotacaoScotEmb(TipoCotacao.MILHO_SACA);		
-		atualizarCotacaoScot(TipoCotacao.BEZERRO_MACHO);		
-		atualizarCotacaoScot(TipoCotacao.NOVILHA);
+		atualizarCotacaoScot(TipoCotacao.BEZERRO_MESTICO);
+		atualizarCotacaoScot(TipoCotacao.BEZERRO_NELORE);
+		atualizarCotacaoScot(TipoCotacao.NOVILHA_MESTICA);
+		atualizarCotacaoScot(TipoCotacao.NOVILHA_NELORE);
 				
 	}
 	
@@ -402,7 +404,7 @@ public class CigaFacade {
 				    		
 				    	String praca = children.get(1).text();
 				    	String valorAVista = children.get(2).text();
-				    	String valorAPrazo = children.get(2).text();
+				    	String valorAPrazo = children.get(3).text();
 					    
 				    	Cotacao c = CigaDAO.getInstance().buscarCotacao(uf, praca, tipoCotacao);
 				    	
@@ -465,11 +467,17 @@ public class CigaFacade {
 				    int idxTab = 0;
 				    
 				    switch (tipoCotacao) {
-					    case BEZERRO_MACHO:
+					    case BEZERRO_MESTICO:
 					    	idxTab = 1; 
 					    	break;
-					    case NOVILHA:
+					    case BEZERRO_NELORE:
+					    	idxTab = 0; 
+					    	break;
+					    case NOVILHA_MESTICA:
 					    	idxTab = 3; 
+					    	break;
+					    case NOVILHA_NELORE:
+					    	idxTab = 2; 
 					    	break;
 					    default:
 					    	throw new UnsupportedOperationException("Tipo de cotação não existe no site ");
