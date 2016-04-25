@@ -8,7 +8,7 @@ GOOGLE MAP
 
 			// Map Coordination
 
-			var latlng = new google.maps.LatLng(-20.442629, -54.594831);
+			var latlng = new google.maps.LatLng(-20.4572764,-54.5955029);
 
 			// Map Options
 			var myOptions = {
@@ -33,7 +33,7 @@ GOOGLE MAP
 
 		  	// First Marker Coordination
 			
-			var myLatlng = new google.maps.LatLng(-20.443353, -54.595089);
+			var myLatlng = new google.maps.LatLng(-20.4572764,-54.5955029);
 
 			// Your Texts 
 
@@ -46,7 +46,7 @@ GOOGLE MAP
 
 			  '</h4>' +
 			  
-			  'Rua João de Oliveira Lima, 123 <br/>Campo Grande - MS' +
+			  'Rua Alagoas, 294 <br/>Campo Grande - MS' +
 			  
 			  '<p>' +
 			  
